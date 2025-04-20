@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 271 100% 63%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 156 100% 47%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 195 100% 50%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 271 100% 63%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 230 25% 7%;
+    --foreground: 210 20% 98%;
+
+    --card: 230 30% 10%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 230 25% 7%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 271 100% 70%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 156 100% 47%;
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 195 100% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 230 25% 15%;
+    --muted-foreground: 210 20% 80%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 230 25% 18%;
+    --input: 230 25% 15%;
+    --ring: 271 100% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-image: radial-gradient(circle at 50% 0%, rgba(153, 69, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+    background-attachment: fixed;
+  }
+}
+
+.glow-text {
+  text-shadow: 0 0 15px rgba(153, 69, 255, 0.7);
+}
+
+.glow-border {
+  box-shadow: 0 0 15px rgba(153, 69, 255, 0.3);
+}
+
+.glow-button {
+  box-shadow: 0 0 20px rgba(153, 69, 255, 0.5);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #9945ff, #14f195);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.glass-card {
+  background: rgba(20, 20, 40, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(153, 69, 255, 0.2);
+}
+
+.grid-bg {
+  background-image: linear-gradient(rgba(153, 69, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(153, 69, 255, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
