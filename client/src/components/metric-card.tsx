@@ -1,80 +1,56 @@
-"use client"
-
-import type React from "react"
-
-import { useState } from "react"
-import { Card, CardContent } from "./ui/card"
-import { ChevronDown, ChevronUp } from "lucide-react"
-
 interface MetricCardProps {
-  icon: React.ReactNode
-  name: string
-  score: number
-  description: string
-  details: string
+  icon: React.ReactNode;
+  name: string;
+  score: number;
+  description: string;
+  details: string;
+  className?: string;
 }
 
-export default function MetricCard({ icon, name, score, description, details }: MetricCardProps) {
-  const [expanded, setExpanded] = useState(false)
-
-  // Calculate color based on score
+export default function MetricCard({ 
+  icon, 
+  name, 
+  score, 
+  description, 
+  details,
+  className = ""
+}: MetricCardProps) {
+  // Calculate score color
   const getScoreColor = (value: number) => {
-    if (value > 75) return "#14F195" // Success green
-    if (value > 50) return "#F59E0B" // Warning amber
-    return "#EF4444" // Error red
-  }
-
-  const scoreColor = getScoreColor(score)
+    if (value >= 80) return "bg-green-500";
+    if (value >= 65) return "bg-[#14F195]";
+    if (value >= 50) return "bg-yellow-500";
+    if (value >= 30) return "bg-orange-500";
+    return "bg-red-500";
+  };
 
   return (
-    <Card className="overflow-hidden transition-all duration-300 glass-card border-[#2A2A4A] hover:border-[#9945FF]/30">
-      <CardContent className="p-0">
-        <div className="p-5">
-          <div className="flex items-start gap-4">
-            <div className="bg-[#1A1A2E] rounded-md flex items-center justify-center p-3">{icon}</div>
-            <div className="flex-1">
-              <div className="flex justify-between items-center mb-2">
-                <h3 className="font-medium text-white">{name}</h3>
-                <span className="font-semibold" style={{ color: scoreColor }}>
-                  {score}/100
-                </span>
-              </div>
-              <p className="text-sm text-[#B4B4D9]">{description}</p>
+    <div 
+      className={`rounded-xl border border-[#2A2A4A] bg-[#1A1A2E]/50 shadow-sm 
+        hover:border-[#9945FF]/30 transition-all duration-300 ${className}`}
+    >
+      <div className="p-6">
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-3">
+            <div className="flex-shrink-0">
+              {icon}
             </div>
+            <h3 className="text-xl font-semibold text-white leading-none tracking-tight">{name}</h3>
           </div>
-
-          <div className="mt-4 w-full h-2 bg-[#1A1A2E] rounded-full overflow-hidden">
-            <div
-              className="h-full rounded-full"
-              style={{
-                width: `${score}%`,
-                backgroundColor: scoreColor,
-                boxShadow: `0 0 10px ${scoreColor}`,
-                transition: "width 1s ease-out",
-              }}
-            ></div>
+          
+          <div>
+            <span className={`h-8 w-8 rounded-full flex items-center justify-center text-xs font-semibold text-white ${getScoreColor(score)}`}>
+              {score}
+            </span>
           </div>
-
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="flex items-center text-sm text-[#9945FF] mt-4 hover:underline"
-          >
-            {expanded ? (
-              <>
-                <span>Show less</span>
-                <ChevronUp className="h-4 w-4 ml-1" />
-              </>
-            ) : (
-              <>
-                <span>Learn more</span>
-                <ChevronDown className="h-4 w-4 ml-1" />
-              </>
-            )}
-          </button>
         </div>
-
-        {expanded && <div className="p-5 bg-[#1A1A2E] border-t border-[#2A2A4A] text-sm text-[#B4B4D9]">{details}</div>}
-      </CardContent>
-    </Card>
-  )
+        
+        <p className="text-sm text-[#B4B4D9] mb-4">{description}</p>
+        
+        <div className="pt-4 border-t border-[#2A2A4A]">
+          <p className="text-[#B4B4D9] text-sm">{details}</p>
+        </div>
+      </div>
+    </div>
+  );
 }
