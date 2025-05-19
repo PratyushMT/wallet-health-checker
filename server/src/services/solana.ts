@@ -1,6 +1,10 @@
 import { Connection, PublicKey } from '@solana/web3.js';
+import dotenv from 'dotenv'
 
-const connection = new Connection('https://api.devnet.solana.com', 'confirmed');
+dotenv.config()
+
+const api = process.env.DEVNET_API || 'https://api.devnet.solana.com'
+const connection = new Connection(api, 'confirmed');
 
 export async function getAccountInfo(address: string) {
   try {

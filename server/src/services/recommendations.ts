@@ -137,7 +137,7 @@ export function generateRecommendations(healthAnalysis: HealthAnalysis): Recomme
       severity: 'important',
       title: 'Poor Overall Wallet Health',
       description: 'Your wallet health score indicates substantial room for improvement.',
-      action: 'Follow the specific recommendations above to improve your overall score.'
+      action: 'Follow the specific recommendations to improve your overall score.'
     });
   }
   
