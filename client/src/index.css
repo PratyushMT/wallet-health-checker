@@ -44,18 +44,17 @@
     box-shadow: 0 0 20px rgba(153, 69, 255, 0.5);
   }
 
-  .gradient-text {
-    background: linear-gradient(90deg, #9945ff, #14f195);
+  .logo-text {
+    background: #9945ff;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-fill-color: transparent;
   }
 
   .glass-card {
     background: rgba(26, 26, 46, 0.7);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(153, 69, 255, 0.2);
+    border: 1px solid lch(49.8% 104.53 311.26 / 0.2);
     transition: all 0.3s ease;
   }
 

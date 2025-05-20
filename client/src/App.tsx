@@ -1,13 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Analysis from "./pages/Analysis";
-import DemoPage from "./pages/Analysis";
 import Navbar from "./components/navbar";
 import WalletContextProvider from "./components/wallet-provider";
 
 export default function App() {
   return (
-  
     <WalletContextProvider>
       <div className="min-h-screen flex flex-col">
         <Navbar />
@@ -15,11 +13,9 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/analysis/address/:address" element={<Analysis />} />
-            <Route path="/analysis/demo" element={<DemoPage />} />
           </Routes>
         </main>
       </div>
     </WalletContextProvider>
-
   );
 }
